@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penyelaman Berpikir Komputasional - Palung Mariana</title>
+    <link rel="icon" href="data:,">
+
+    <!-- Preconnect for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- CDNs -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Screen Reader General Description -->
+    <div id="sr-desc" class="sr-only"
+        style="position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0;">
+        Peta perjalanan vertikal penyelaman Palung Mariana untuk belajar Berpikir Komputasional. Dimulai dari permukaan
+        laut yang terang di atas, menuju twilight zone, midnight zone, abyss, hingga celah sempit Hadalpelagik
+        Challenger Deep sedalam sepuluh ribu sembilan ratus sembilan puluh empat meter di dasar terdalam. Enam
+        checkpoint melingkar kosong menunjukkan pos belajar secara berurutan.
+    </div>
+
+    <!-- Viewport Container -->
+    <div class="viewport-container" id="viewport" role="application" aria-label="Peta Penyelaman Edukasi"
+        aria-describedby="sr-desc">
+
+        <!-- Welcome Panel on the Page -->
+        <div class="welcome-panel" id="welcome-panel">
+            <h1 class="welcome-panel-title">Selamat Datang di Samudera Berpikir Komputasional!</h1>
+            <p class="welcome-panel-text">
+                Jelajahi kedalaman laut untuk mempelajari bagaimana para ilmuwan memecahkan masalah secara logis sebelum
+                merancang teknologi komputer modern.
+            </p>
+            <button class="welcome-panel-btn" id="btn-start-expedition">
+                Mulai Penyelaman <i class="bx bx-chevrons-down btn-bounce-icon"></i>
+            </button>
+        </div>
+
+        <!-- Viewport Zoomable Content -->
+        <div class="map-content" id="map-content">
+
+            <svg class="map-svg" viewBox="0 0 1000 2800" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Deep Sea Gradient -->
+                    <linearGradient id="ocean-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="hsl(200, 85%, 60%)" /> <!-- Surface Sunlight -->
+                        <stop offset="12%" stop-color="hsl(210, 70%, 35%)" /> <!-- Twilight Zone -->
+                        <stop offset="35%" stop-color="hsl(220, 60%, 16%)" /> <!-- Midnight Zone -->
+                        <stop offset="65%" stop-color="hsl(230, 50%, 8%)" /> <!-- Abyssal Zone -->
+                        <stop offset="90%" stop-color="hsl(240, 55%, 4%)" /> <!-- Hadalpelagik -->
+                        <stop offset="100%" stop-color="hsl(240, 60%, 2%)" /> <!-- Challenger Deep -->
+                    </linearGradient>
+
+                    <!-- Flat drop shadow for depths -->
+                    <filter id="flat-shadow" x="-10%" y="-10%" width="120%" height="120%">
+                        <feDropShadow dx="0" dy="6" stdDeviation="0" flood-color="rgba(0,0,0,0.15)" />
+                    </filter>
+                </defs>
+
+                <!-- Background Ocean & Sky Layers -->
+                <rect x="0" y="0" width="1000" height="100" fill="hsl(200, 85%, 75%)" /> <!-- Sunny Sky -->
+                <rect x="0" y="100" width="1000" height="2700" fill="url(#ocean-gradient)" /> <!-- Ocean Depths -->
+
+                <!-- 1. SURFACE LEVEL ILLUSTRATIONS (y: 0 - 350) -->
+                <!-- Sun -->
+                <circle cx="120" cy="45" r="22" fill="hsl(45, 95%, 60%)" />
+                <circle cx="120" cy="45" r="26" fill="hsl(45, 95%, 60%)" opacity="0.2" />
+
+                <!-- Playful Clouds -->
+                <path d="M 280 65 A 15 15 0 0 1 300 50 A 20 20 0 0 1 330 50 A 15 15 0 0 1 350 65 Z" fill="#ffffff" />
+                <path d="M 760 55 A 12 12 0 0 1 775 42 A 16 16 0 0 1 798 42 A 12 12 0 0 1 815 55 Z" fill="#ffffff"
+                    opacity="0.9" />
+
+                <!-- Flat Flying Birds -->
+                <path d="M 210 35 Q 220 25 230 35 Q 240 25 250 35 Q 230 30 210 35" fill="none"
+                    stroke="hsl(210, 30%, 35%)" stroke-width="3" stroke-linecap="round" />
+                <path d="M 640 25 Q 648 17 656 25 Q 664 17 672 25 Q 656 21 640 25" fill="none"
+                    stroke="hsl(210, 30%, 35%)" stroke-width="2.5" stroke-linecap="round" />
+                <path d="M 675 42 Q 681 35 687 42 Q 693 35 699 42 Q 687 39 675 42" fill="none"
+                    stroke="hsl(210, 30%, 35%)" stroke-width="2" stroke-linecap="round" />
+
+                <!-- Wave lines at the boundary y=100 -->
+                <path d="M 0 100 Q 250 85 500 100 T 1000 100 L 1000 140 L 0 140 Z" fill="hsl(200, 80%, 45%)"
+                    opacity="0.85" />
+                <path d="M 0 100 Q 250 85 500 100 T 1000 100 L 1000 120 L 0 120 Z" fill="hsl(200, 90%, 55%)" />
+
+                <!-- Floating research vessel (placed on the new water surface) -->
+                <g transform="translate(10, 40)">
+                    <polygon points="430,45 570,45 545,75 455,75" fill="hsl(0, 75%, 50%)" filter="url(#flat-shadow)" />
+                    <!-- Red Hull -->
+                    <rect x="475" y="20" width="35" height="25" fill="hsl(0, 0%, 95%)" /> <!-- Cabin -->
+                    <rect x="480" y="25" width="10" height="8" fill="hsl(200, 80%, 40%)" /> <!-- Window -->
+                    <line x1="525" y1="10" x2="525" y2="45" stroke="hsl(220, 10%, 20%)" stroke-width="3" />
+                    <!-- Mast -->
+                    <polygon points="525,10 540,15 525,20" fill="hsl(45, 95%, 55%)" /> <!-- Flag -->
+                </g>
+
+                <!-- 2. TWILIGHT ZONE (y: 350 - 900) -->
+                <!-- Geometric Jellyfish -->
+                <g transform="translate(180, 480)">
+                    <path d="M 0 15 A 15 15 0 0 1 30 15 Z" fill="hsl(180, 80%, 75%)" opacity="0.65" />
+                    <line x1="6" y1="15" x2="4" y2="40" stroke="hsl(180, 80%, 75%)" stroke-width="2" opacity="0.5" />
+                    <line x1="15" y1="15" x2="16" y2="45" stroke="hsl(180, 80%, 75%)" stroke-width="2" opacity="0.5" />
+                    <line x1="24" y1="15" x2="26" y2="38" stroke="hsl(180, 80%, 75%)" stroke-width="2" opacity="0.5" />
+                </g>
+                <g transform="translate(750, 700)">
+                    <path d="M 0 12 A 12 12 0 0 1 24 12 Z" fill="hsl(330, 80%, 75%)" opacity="0.6" />
+                    <line x1="5" y1="12" x2="3" y2="32" stroke="hsl(330, 80%, 75%)" stroke-width="1.8" opacity="0.5" />
+                    <line x1="12" y1="12" x2="14" y2="37" stroke="hsl(330, 80%, 75%)" stroke-width="1.8"
+                        opacity="0.5" />
+                    <line x1="19" y1="12" x2="21" y2="30" stroke="hsl(330, 80%, 75%)" stroke-width="1.8"
+                        opacity="0.5" />
+                </g>
+
+                <!-- 3. MIDNIGHT ZONE (y: 900 - 1500) -->
+                <!-- Anglerfish (Glowing bait) -->
+                <g transform="translate(200, 1100)">
+                    <!-- Body tail -->
+                    <polygon points="10,25 -5,10 -5,40" fill="hsl(220, 20%, 25%)" />
+                    <!-- Body circle -->
+                    <circle cx="30" cy="25" r="22" fill="hsl(220, 20%, 25%)" filter="url(#flat-shadow)" />
+                    <!-- Eye -->
+                    <circle cx="42" cy="18" r="3" fill="hsl(180, 80%, 90%)" />
+                    <!-- Teeth -->
+                    <polygon points="44,28 47,25 46,31" fill="hsl(0, 0%, 95%)" />
+                    <polygon points="48,31 51,28 50,33" fill="hsl(0, 0%, 95%)" />
+                    <!-- Esca (glowing bulb antenna) -->
+                    <path d="M 38 7 Q 60 -15 50 -25" fill="none" stroke="hsl(45, 95%, 65%)" stroke-width="2" />
+                    <circle cx="50" cy="-25" r="6" fill="hsl(45, 95%, 65%)" class="glow-vent" />
+                </g>
+
+                <!-- Tiny glowing floating particles -->
+                <circle cx="700" cy="1000" r="3" fill="hsl(180, 85%, 65%)" class="glow-vent" />
+                <circle cx="780" cy="1250" r="4" fill="hsl(180, 85%, 65%)" class="glow-vent" />
+                <circle cx="150" cy="1350" r="3" fill="hsl(180, 85%, 65%)" class="glow-vent" />
+
+                <!-- 4. ABYSSAL ZONE (y: 1500 - 2000) -->
+                <!-- Dark rock walls encroaching the viewport -->
+                <polygon points="0,1500 180,1650 0,1800" fill="hsl(220, 16%, 12%)" filter="url(#flat-shadow)" />
+                <polygon points="1000,1600 840,1780 1000,1920" fill="hsl(220, 16%, 11%)" filter="url(#flat-shadow)" />
+
+                <!-- Tiny geometric squid -->
+                <g transform="translate(760, 1750)">
+                    <polygon points="20,0 10,25 30,25" fill="hsl(205, 50%, 40%)" opacity="0.6" />
+                    <line x1="15" y1="25" x2="15" y2="45" stroke="hsl(205, 50%, 40%)" stroke-width="2" opacity="0.5" />
+                    <line x1="20" y1="25" x2="20" y2="48" stroke="hsl(205, 50%, 40%)" stroke-width="2" opacity="0.5" />
+                    <line x1="25" y1="25" x2="25" y2="43" stroke="hsl(205, 50%, 40%)" stroke-width="2" opacity="0.5" />
+                </g>
+
+                <!-- 5. HADALPELAGIK TRENCH WALLS (y: 2000 - 2800) -->
+                <!-- Massive vertical deep cracks -->
+                <!-- Left wall -->
+                <polygon points="0,2000 240,2240 180,2480 280,2800 0,2800" fill="hsl(220, 18%, 8%)" />
+                <polygon points="0,2000 200,2210 150,2450 250,2800 0,2800" fill="hsl(220, 18%, 10%)" />
+
+                <!-- Right wall -->
+                <polygon points="1000,2000 800,2180 840,2460 700,2800 1000,2800" fill="hsl(220, 18%, 8%)" />
+                <polygon points="1000,2000 760,2150 800,2440 660,2800 1000,2800" fill="hsl(220, 18%, 10%)" />
+
+                <!-- Hydrothermal Smokers (Thermal Vents) -->
+                <!-- Smoker 1 -->
+                <polygon points="230,2650 250,2590 270,2650" fill="hsl(220, 10%, 20%)" />
+                <ellipse cx="250" cy="2585" rx="14" ry="7" fill="hsl(25, 75%, 55%)" class="glow-vent" opacity="0.65" />
+                <ellipse cx="250" cy="2570" rx="9" ry="5" fill="hsl(45, 90%, 65%)" class="glow-vent" opacity="0.45" />
+
+                <!-- Smoker 2 (Right side) -->
+                <polygon points="710,2620 725,2570 740,2620" fill="hsl(220, 10%, 20%)" />
+                <ellipse cx="725" cy="2565" rx="12" ry="6" fill="hsl(25, 75%, 55%)" class="glow-vent" opacity="0.65" />
+
+                <!-- 6. VERTICAL WINNING DIVE PATH -->
+                <!-- Bottom shadow border, thick track line, and dashed inner centerline -->
+                <path class="travel-path-bg"
+                    d="M 500 180 C 400 350, 300 480, 350 650 C 400 820, 680 980, 650 1150 C 620 1320, 250 1480, 300 1650 C 350 1820, 720 1980, 680 2150 C 640 2320, 500 2480, 500 2650" />
+                <path class="travel-path" id="travel-path-main"
+                    d="M 500 180 C 400 350, 300 480, 350 650 C 400 820, 680 980, 650 1150 C 620 1320, 250 1480, 300 1650 C 350 1820, 720 1980, 680 2150 C 640 2320, 500 2480, 500 2650" />
+                <path class="travel-path-dash"
+                    d="M 500 180 C 400 350, 300 480, 350 650 C 400 820, 680 980, 650 1150 C 620 1320, 250 1480, 300 1650 C 350 1820, 720 1980, 680 2150 C 640 2320, 500 2480, 500 2650" />
+            </svg>
+
+            <!-- Submarine Player Pin Marker -->
+            <div class="player-marker" id="player-marker" aria-hidden="true">
+                <div class="player-marker-submarine">
+                    <div class="sub-propeller"></div>
+                </div>
+            </div>
+
+            <!-- Absolute overlay divs for tactile buttons -->
+            <div id="checkpoints-overlay"></div>
+
+        </div>
+    </div>
+
+    <!-- HUD control panel -->
+    <div class="hud-controls" role="group" aria-label="Kontrol Tampilan Peta">
+        <button class="hud-btn" id="btn-zoom-reset" aria-label="Fokus Kapal Selam" title="Fokus Kapal Selam">
+            <i class="bx bx-anchor"></i>
+        </button>
+    </div>
+
+    <!-- Bottom Sheet / Side Panel -->
+    <div class="bottom-sheet-overlay" id="sheet-overlay" role="dialog" aria-modal="true" aria-labelledby="stage-title">
+        <div class="bottom-sheet" id="bottom-sheet">
+
+            <div class="sheet-header">
+                <div>
+                    <div class="stage-num" id="stage-num"><i class="bx bx-compass"></i> ZONA 1</div>
+                    <h2 class="stage-title" id="stage-title">Permukaan Laut</h2>
+                </div>
+                <button class="btn-close" id="btn-close-sheet" aria-label="Tutup Detail Pos" title="Tutup"><i
+                        class="bx bx-x"></i></button>
+            </div>
+
+            <!-- Dynamic Content Area -->
+            <div id="sheet-content-area"></div>
+        </div>
+    </div>
+
+    <!-- Script Links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
